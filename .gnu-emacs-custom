@@ -1,0 +1,46 @@
+(setq load-path (cons "/usr/lib64/erlang/lib/tools-2.6.6.6/emacs" load-path))
+
+(setq erlang-root-dir "/usr/lib64/erlang")
+(setq exec-path (cons "/usr/lib64/erlang/bin" exec-path))
+(setq erlang-man-root-dir "/usr/lib64/erlang/man")
+
+
+
+
+(require 'erlang-start)
+
+
+(add-to-list 'auto-mode-alist '("\\.erl\\'" . erlang-mode))
+
+(add-to-list 'load-path "/home/kasyaar/.emacs.d/")
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "/home/kasyaar/.emacs.d/ac-dict")
+(ac-config-default)
+(add-to-list 'ac-modes 'erlang-mode)
+;;(define-key ac-mode-map (kbd "TAB") 'auto-complete)
+
+(require 'org-install)
+(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
+(define-key global-map "\C-cl" 'org-store-link)
+(define-key global-map "\C-ca" 'org-agenda)
+(define-key global-map "\C-ctt" 'org-insert-todo-heading)
+(setq org-log-done t)
+
+
+(global-set-key "\C-c\C-d" "\C-a\C- \C-e\M-w")
+
+(add-to-list 'load-path
+  "~/.emacs.d/plugins/yasnippet")
+(require 'yasnippet)
+(yas/global-mode 1)
+
+
+(autoload 'markdown-mode "markdown-mode.el"
+	  "Major mode for editing Markdown" t)
+
+(setq auto-mode-alist
+   (cons '("\\.markdown" . markdown-mode) auto-mode-alist))
+
+(add-to-list 'load-path "/usr/local/share/emacs/site-lisp/dvc")
+(require 'dvc-autoloads)
+
